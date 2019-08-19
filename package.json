@@ -8,7 +8,7 @@
     "email": "kennsmacintosh@gmail.com"
   },
   "scripts": {
-    "start": "webpack",
+    "build": "webpack",
     "watch": "webpack --watch"
   },
   "repository": "https://github.com/kenns29/react-svg-brush",
@@ -21,7 +21,6 @@
     "babel-core": "^6.23.1",
     "babel-eslint": "^8.0.3",
     "babel-loader": "^7.1.4",
-    "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-transform-es2015-parameters": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",

@@ -1,7 +1,4 @@
 {
-  "plugins": [
-    "transform-es2015-parameters",
-    ["module-resolver", {"root": ["src"]}]
-  ],
+  "plugins": ["transform-es2015-parameters"],
   "presets": ["env", "react", "stage-0"]
 }
