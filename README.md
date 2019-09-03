@@ -33,7 +33,9 @@ export default class App extends Component {
   onBrushEnd = ({target, type, selection, sourceEvent})=>{...}
   renderBrush = () => (
     <SVGBrush
-      // Defines the boundary of the brush
+      // Defines the boundary of the brush.
+      // Strictly uses the format [[x0, y0], [x1, y1]] for both 1d and 2d brush.
+      // Note: d3 allows the format [x, y] for 1d brush.
       extent={[[x0, y0], [x1, y1]]}
       // Obtain mouse positions relative the current svg during mouse events.
       // By default, getEventMouse returns [event.clientX, event.clientY]
