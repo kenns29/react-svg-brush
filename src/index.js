@@ -69,8 +69,11 @@ export default class SVGBrush extends PureComponent {
             switch (brushType) {
               case '2d':
                 selection = [
-                  [Math.min(sx, x), Math.min(sy, y)],
-                  [Math.max(sx, x), Math.max(sy, y)]
+                  [
+                    Math.max(Math.min(sx, x), x0),
+                    Math.max(Math.min(sy, y), y0)
+                  ],
+                  [Math.min(Math.max(sx, x), x1), Math.min(Math.max(sy, y), y1)]
                 ];
                 break;
               case 'x':
@@ -89,6 +92,7 @@ export default class SVGBrush extends PureComponent {
           }
         }}
         onPointerUp={event => {
+          console.log('pointer up');
           this.move = null;
           this.props.onBrushEnd({
             target: this,
