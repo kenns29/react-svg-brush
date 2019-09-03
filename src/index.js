@@ -92,7 +92,6 @@ export default class SVGBrush extends PureComponent {
           }
         }}
         onPointerUp={event => {
-          console.log('pointer up');
           this.move = null;
           this.props.onBrushEnd({
             target: this,
