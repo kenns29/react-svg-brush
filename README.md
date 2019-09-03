@@ -11,7 +11,7 @@ The [d3-brush](https://github.com/d3/d3-brush) library is commonly used for data
 - d3-brush directly modifies the DOM, which also means customization of the brush behavior/view has to be done directly on the DOM, violating the best practices in React.
 - Using d3-brush inside a React component typically requires using the react lifecycle methods, e.g. `componentDidUpdate`, adding complexity in the implementation of the React component.
 
-The React SVG Brush library emulates the d3-brush library DOM structure (95% identical) and functionalities but renders the Brush completely using the React virtual DOM, making it easy for applications that use d3-brush to switch to this library to adhere to React best practices.
+The React SVG Brush library emulates the d3-brush library DOM structure (95% identical) and functionalities but renders the Brush completely using the React virtual DOM, making it easy for applications that use d3-brush to switch to this library to adhere to the React best practices.
 
 ## Installation
 
@@ -20,3 +20,42 @@ npm install react-svg-brush
 ```
 
 ## Example Usage
+
+```javascript
+import React, {Component} from 'react';
+import SVGBrush from 'react-svg-brush';
+
+...
+
+export default class App extends Component {
+  onBrushStart = ({target, type, selection, sourceEvent})=>{...}
+  onBrush = ({target, type, selection, sourceEvent})=>{...}
+  onBrushEnd = ({target, type, selection, sourceEvent})=>{...}
+  renderBrush = () => (
+    <SVGBrush
+      // Defines the boundary of the brush
+      extent={[[x0, y0], [x1, y1]]}
+      // Obtain mouse positions relative the current svg during mouse events.
+      // By default, getEventMouse returns [event.clientX, event.clientY]
+      getEventMouse={event => {
+        const {clientX, clientY} = event;
+        const {left, top} = this.svg.getBoundingClientRect();
+        return [clientX - left, clientY - top];
+      }}
+      brushType="2d" // "x"
+      onBrushStart={this.onBrushStart}
+      onBrush={this.onBrush}
+      onBrushEnd={this.onBrushEnd}
+    />
+  )
+  render() {
+    return (
+      <svg ref={input => (this.svg = input)}>
+        {this.renderBrush()}
+      </svg>
+    );
+  }
+}
+```
+
+More demo code can be found in this repo, [React SVG Brush Example](https://github.com/kenns29/react-svg-brush-example).
