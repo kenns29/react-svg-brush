@@ -103,6 +103,12 @@ Manually set the selection of the brush. This is typically used when setting the
 
 ### Methods
 
+`getEventMouse` **(Function, Optional)**
+
+- Default: `event => [event.clientX, event.clientY]`
+
+Obtain the mouse position given the pointer event. It must return an array of `[x, y]` that specifies the position of the mouse. By default, it returns `[event.clientX, event.clientY]` which is the position relative to the web page. The default behavior of this function is typically overwritten, because it is more common to use the position relative to the container of the brush (e.g. the SVG).
+
 `onBrushStart` **(Function, Optional)**
 
 The callback function when the brushing interaction starts (i.e. mouse click). This function receives one object as the argument, which contains the following attributes:
