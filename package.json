@@ -1,8 +1,13 @@
 {
   "name": "react-svg-brush",
   "main": "dist/react-svg-brush.js",
-  "keywords": ["React", "SVG", "visualization", "brush"],
-  "version": "0.0.5",
+  "keywords": [
+    "React",
+    "SVG",
+    "visualization",
+    "brush"
+  ],
+  "version": "0.0.6",
   "license": "MIT",
   "author": {
     "name": "Hong Wang",
