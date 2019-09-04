@@ -1,6 +1,7 @@
 {
   "name": "react-svg-brush",
   "main": "dist/react-svg-brush.js",
+  "keywords": ["React", "SVG", "visualization", "brush"]
   "version": "0.0.5",
   "license": "MIT",
   "author": {
