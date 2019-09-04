@@ -123,7 +123,7 @@ The callback function during brush interaction (i.e. while dragging the brush). 
 
 `onBrushEnd` **(Function, Optional)**
 
-The callback function during brush interaction (i.e. while dragging the brush). This function receives one object as the argument, which contains the following attributes:
+The callback function at the end of brush interaction (i.e. mouse up). This function receives one object as the argument, which contains the following attributes:
 
 - `target` - Refers to the brush object itself (the React component).
 - `type` - The type of the callback, in this case, it is `end`
