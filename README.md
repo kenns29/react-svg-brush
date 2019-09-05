@@ -4,6 +4,20 @@ A React-based brush library that emulates the [d3-brush](https://github.com/d3/d
 
 This library is still in Beta, please file bug report directly to the author.
 
+## Examples
+
+**1D Brush**
+
+[<img alt="brush-1d" src="docs/brush-1d.png"></img>](https://codepen.io/kennsmacintosh/pen/yLBPGbN)
+
+**2D Brush**
+
+[<img alt="brush-1d" src="docs/brush-2d.png" width="200px"></img>](https://codepen.io/kennsmacintosh/pen/dybZwQj)
+
+**Brush Snapping (Transition)**
+
+[<img alt="brush-1d" src="docs/brush-1d.png"></img>](https://codepen.io/kennsmacintosh/pen/oNvoVaY)
+
 ## Why Yet Another Brush Library
 
 The [d3-brush](https://github.com/d3/d3-brush) library is commonly used for data selection within visualizations. It enables data selection through dragging on the visualization interface (holding the left mouse and move the curser). It also renders the brushed area directly on the visualization. However, there are several drawbacks when using [d3-brush](https://github.com/d3/d3-brush) directly inside a React-based application:
