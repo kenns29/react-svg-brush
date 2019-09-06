@@ -9,7 +9,7 @@ module.exports = {
   output: {
     path: resolve('./dist'),
     filename: 'react-svg-brush.js',
-    library: ['rsbrush'],
+    library: 'ReactSVGBrush',
     libraryTarget: 'umd',
     publicPath: '/'
   },
