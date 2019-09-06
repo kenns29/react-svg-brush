@@ -92,11 +92,17 @@ export default class SVGBrush extends PureComponent {
           }
         }}
         onPointerUp={event => {
+          const move = this.props.getEventMouse(event);
+          const selection =
+            this.move && this.move[0] === move[0] && this.move[1] === move[1]
+              ? null
+              : this.state.selection;
           this.move = null;
+          this.setState({selection});
           this.props.onBrushEnd({
             target: this,
             type: 'end',
-            selection: this.state.selection,
+            selection,
             sourceEvent: event
           });
         }}
