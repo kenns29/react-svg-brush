@@ -35,6 +35,27 @@ export default class SVGBrush extends PureComponent {
     this.move = null;
   }
 
+  _handleBrushStart = event => {
+    event.target.setPointerCapture(event.pointerId);
+    this.move = this.props.getEventMouse(event);
+    this.props.onBrushStart({
+      target: this,
+      type: 'start',
+      selection: this.state.selection,
+      sourceEvent: event
+    });
+  };
+
+  _handleBrushEnd = event => {
+    this.move = null;
+    this.props.onBrushEnd({
+      target: this,
+      type: 'end',
+      selection: this.state.selection,
+      sourceEvent: event
+    });
+  };
+
   _renderOverlay() {
     const {
       extent: [[x0, y0], [x1, y1]],
@@ -51,16 +72,7 @@ export default class SVGBrush extends PureComponent {
         y={y0}
         width={x1 - x0}
         height={y1 - y0}
-        onPointerDown={event => {
-          event.target.setPointerCapture(event.pointerId);
-          this.move = this.props.getEventMouse(event);
-          this.props.onBrushStart({
-            target: this,
-            type: 'start',
-            selection: this.state.selection,
-            sourceEvent: event
-          });
-        }}
+        onPointerDown={this._handleBrushStart}
         onPointerMove={event => {
           if (this.move) {
             const [x, y] = this.props.getEventMouse(event);
@@ -165,16 +177,7 @@ export default class SVGBrush extends PureComponent {
           y={y}
           width={w}
           height={h}
-          onPointerDown={event => {
-            event.target.setPointerCapture(event.pointerId);
-            this.move = this.props.getEventMouse(event);
-            this.props.onBrushStart({
-              target: this,
-              type: 'start',
-              selection: this.state.selection,
-              sourceEvent: event
-            });
-          }}
+          onPointerDown={this._handleBrushStart}
           onPointerMove={event => {
             if (this.move) {
               const [x, y] = this.props.getEventMouse(event);
@@ -203,15 +206,7 @@ export default class SVGBrush extends PureComponent {
               });
             }
           }}
-          onPointerUp={event => {
-            this.move = null;
-            this.props.onBrushEnd({
-              target: this,
-              type: 'end',
-              selection: this.state.selection,
-              sourceEvent: event
-            });
-          }}
+          onPointerUp={this._handleBrushEnd}
         />
         <rect
           ref={input => (this.handleN = input)}
@@ -223,16 +218,7 @@ export default class SVGBrush extends PureComponent {
           height={10}
           fill="none"
           pointerEvents="visible"
-          onPointerDown={event => {
-            event.target.setPointerCapture(event.pointerId);
-            this.move = this.props.getEventMouse(event);
-            this.props.onBrushStart({
-              target: this,
-              type: 'start',
-              selection: this.state.selection,
-              sourceEvent: event
-            });
-          }}
+          onPointerDown={this._handleBrushStart}
           onPointerMove={event => {
             if (this.move) {
               const [x, y] = this.props.getEventMouse(event);
@@ -260,15 +246,7 @@ export default class SVGBrush extends PureComponent {
               }
             }
           }}
-          onPointerUp={event => {
-            this.move = null;
-            this.props.onBrushEnd({
-              target: this,
-              type: 'end',
-              selection: this.state.selection,
-              sourceEvent: event
-            });
-          }}
+          onPointerUp={this._handleBrushEnd}
         />
         <rect
           ref={input => (this.handleE = input)}
@@ -280,16 +258,7 @@ export default class SVGBrush extends PureComponent {
           height={h + 10}
           fill="none"
           pointerEvents="visible"
-          onPointerDown={event => {
-            event.target.setPointerCapture(event.pointerId);
-            this.move = this.props.getEventMouse(event);
-            this.props.onBrushStart({
-              target: this,
-              type: 'start',
-              selection: this.state.selection,
-              sourceEvent: event
-            });
-          }}
+          onPointerDown={this._handleBrushStart}
           onPointerMove={event => {
             if (this.move) {
               const [x, y] = this.props.getEventMouse(event);
@@ -317,15 +286,7 @@ export default class SVGBrush extends PureComponent {
               }
             }
           }}
-          onPointerUp={event => {
-            this.move = null;
-            this.props.onBrushEnd({
-              target: this,
-              type: 'end',
-              selection: this.state.selection,
-              sourceEvent: event
-            });
-          }}
+          onPointerUp={this._handleBrushEnd}
         />
         <rect
           ref={input => (this.handleS = input)}
@@ -337,16 +298,7 @@ export default class SVGBrush extends PureComponent {
           height={10}
           fill="none"
           pointerEvents="visible"
-          onPointerDown={event => {
-            event.target.setPointerCapture(event.pointerId);
-            this.move = this.props.getEventMouse(event);
-            this.props.onBrushStart({
-              target: this,
-              type: 'start',
-              selection: this.state.selection,
-              sourceEvent: event
-            });
-          }}
+          onPointerDown={this._handleBrushStart}
           onPointerMove={event => {
             if (this.move) {
               const [x, y] = this.props.getEventMouse(event);
@@ -374,15 +326,7 @@ export default class SVGBrush extends PureComponent {
               }
             }
           }}
-          onPointerUp={event => {
-            this.move = null;
-            this.props.onBrushEnd({
-              target: this,
-              type: 'end',
-              selection: this.state.selection,
-              sourceEvent: event
-            });
-          }}
+          onPointerUp={this._handleBrushEnd}
         />
         <rect
           ref={input => (this.handleW = input)}
@@ -394,16 +338,7 @@ export default class SVGBrush extends PureComponent {
           height={h + 10}
           fill="none"
           pointerEvents="visible"
-          onPointerDown={event => {
-            event.target.setPointerCapture(event.pointerId);
-            this.move = this.props.getEventMouse(event);
-            this.props.onBrushStart({
-              target: this,
-              type: 'start',
-              selection: this.state.selection,
-              sourceEvent: event
-            });
-          }}
+          onPointerDown={this._handleBrushStart}
           onPointerMove={event => {
             if (this.move) {
               const [x, y] = this.props.getEventMouse(event);
@@ -431,15 +366,7 @@ export default class SVGBrush extends PureComponent {
               }
             }
           }}
-          onPointerUp={event => {
-            this.move = null;
-            this.props.onBrushEnd({
-              target: this,
-              type: 'end',
-              selection: this.state.selection,
-              sourceEvent: event
-            });
-          }}
+          onPointerUp={this._handleBrushEnd}
         />
         <rect
           ref={input => (this.handleNW = input)}
@@ -451,16 +378,7 @@ export default class SVGBrush extends PureComponent {
           height={10}
           fill="none"
           pointerEvents="visible"
-          onPointerDown={event => {
-            event.target.setPointerCapture(event.pointerId);
-            this.move = this.props.getEventMouse(event);
-            this.props.onBrushStart({
-              target: this,
-              type: 'start',
-              selection: this.state.selection,
-              sourceEvent: event
-            });
-          }}
+          onPointerDown={this._handleBrushStart}
           onPointerMove={event => {
             if (this.move) {
               const [x, y] = this.props.getEventMouse(event);
@@ -506,15 +424,7 @@ export default class SVGBrush extends PureComponent {
               }
             }
           }}
-          onPointerUp={event => {
-            this.move = null;
-            this.props.onBrushEnd({
-              target: this,
-              type: 'end',
-              selection: this.state.selection,
-              sourceEvent: event
-            });
-          }}
+          onPointerUp={this._handleBrushEnd}
         />
         <rect
           ref={input => (this.handleNE = input)}
@@ -526,16 +436,7 @@ export default class SVGBrush extends PureComponent {
           height={10}
           fill="none"
           pointerEvents="visible"
-          onPointerDown={event => {
-            event.target.setPointerCapture(event.pointerId);
-            this.move = this.props.getEventMouse(event);
-            this.props.onBrushStart({
-              target: this,
-              type: 'start',
-              selection: this.state.selection,
-              sourceEvent: event
-            });
-          }}
+          onPointerDown={this._handleBrushStart}
           onPointerMove={event => {
             if (this.move) {
               const [x, y] = this.props.getEventMouse(event);
@@ -581,15 +482,7 @@ export default class SVGBrush extends PureComponent {
               }
             }
           }}
-          onPointerUp={event => {
-            this.move = null;
-            this.props.onBrushEnd({
-              target: this,
-              type: 'end',
-              selection: this.state.selection,
-              sourceEvent: event
-            });
-          }}
+          onPointerUp={this._handleBrushEnd}
         />
         <rect
           ref={input => (this.handleSE = input)}
@@ -601,16 +494,7 @@ export default class SVGBrush extends PureComponent {
           height={10}
           fill="none"
           pointerEvents="visible"
-          onPointerDown={event => {
-            event.target.setPointerCapture(event.pointerId);
-            this.move = this.props.getEventMouse(event);
-            this.props.onBrushStart({
-              target: this,
-              type: 'start',
-              selection: this.state.selection,
-              sourceEvent: event
-            });
-          }}
+          onPointerDown={this._handleBrushStart}
           onPointerMove={event => {
             if (this.move) {
               const [x, y] = this.props.getEventMouse(event);
@@ -656,15 +540,7 @@ export default class SVGBrush extends PureComponent {
               }
             }
           }}
-          onPointerUp={event => {
-            this.move = null;
-            this.props.onBrushEnd({
-              target: this,
-              type: 'end',
-              selection: this.state.selection,
-              sourceEvent: event
-            });
-          }}
+          onPointerUp={this._handleBrushEnd}
         />
         <rect
           ref={input => (this.handleSW = input)}
@@ -676,16 +552,7 @@ export default class SVGBrush extends PureComponent {
           height={10}
           fill="none"
           pointerEvents="visible"
-          onPointerDown={event => {
-            event.target.setPointerCapture(event.pointerId);
-            this.move = this.props.getEventMouse(event);
-            this.props.onBrushStart({
-              target: this,
-              type: 'start',
-              selection: this.state.selection,
-              sourceEvent: event
-            });
-          }}
+          onPointerDown={this._handleBrushStart}
           onPointerMove={event => {
             if (this.move) {
               const [x, y] = this.props.getEventMouse(event);
@@ -731,15 +598,7 @@ export default class SVGBrush extends PureComponent {
               }
             }
           }}
-          onPointerUp={event => {
-            this.move = null;
-            this.props.onBrushEnd({
-              target: this,
-              type: 'end',
-              selection: this.state.selection,
-              sourceEvent: event
-            });
-          }}
+          onPointerUp={this._handleBrushEnd}
         />
       </React.Fragment>
     );
