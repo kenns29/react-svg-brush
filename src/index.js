@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
-export default class SVGBrush extends PureComponent {
+class SVGBrush extends PureComponent {
   static defaultProps = {
     selection: null,
     extent: [[0, 0], [1, 1]],
@@ -613,3 +613,6 @@ export default class SVGBrush extends PureComponent {
     );
   }
 }
+
+export default SVGBrush;
+export {SVGBrush};
