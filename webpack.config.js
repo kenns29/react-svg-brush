@@ -23,20 +23,15 @@ module.exports = {
         loader: 'babel-loader',
         exclude: [/node_modules/],
         include: [resolve('.')]
-      },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-      },
-      {
-        test: /\.(png)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {name: '[path][name].[ext]'}
-          }
-        ]
       }
     ]
+  },
+  externals: {
+    react: {
+      commonjs: 'react',
+      commonjs2: 'react',
+      amd: 'react',
+      root: 'React'
+    }
   }
 };
