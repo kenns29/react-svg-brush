@@ -2,7 +2,7 @@
 
 The [react-svg-brush](https://www.npmjs.com/package/react-svg-brush) is a React-based brush library that emulates the [d3-brush](https://github.com/d3/d3-brush) behavior. It renders the brush using React virtual DOM.
 
-This library is still in Beta, please file bug report directly to the author.
+This library is still in Beta, please file bug reports by creating issues in the library [github repo](https://github.com/kenns29/react-svg-brush).
 
 ## Examples
 
