@@ -150,3 +150,6 @@ The callback function at the end of brush interaction (i.e. mouse up). This func
 - `selection` - The changed brush selection at the end of the brush interaction.
 - `sourceEvent` - The React `SyntheticEvent` of the brush, in this case, it is a pointer event.
 
+## Change Log
+
+Refer to the [CHANGELOG.md](CHANGELOG.md) file.
