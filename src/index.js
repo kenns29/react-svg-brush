@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 
 class SVGBrush extends PureComponent {
   static defaultProps = {
-    selection: null,
-    extent: [[0, 0], [1, 1]],
+    extent: [
+      [0, 0],
+      [1, 1]
+    ],
     onBrushStart: event => {},
     onBrush: event => {},
     onBrushEnd: event => {},
@@ -24,7 +26,7 @@ class SVGBrush extends PureComponent {
 
   static getDerivedStateFromProps = (props, state) => ({
     ...state,
-    selection: props.selection || state.selection
+    selection: props.selection === undefined ? state.selection : props.selection
   });
 
   constructor(props) {
@@ -89,10 +91,16 @@ class SVGBrush extends PureComponent {
                 ];
                 break;
               case 'x':
-                selection = [[Math.min(sx, x), y0], [Math.max(sx, x), y1]];
+                selection = [
+                  [Math.min(sx, x), y0],
+                  [Math.max(sx, x), y1]
+                ];
                 break;
               case 'y':
-                selection = [[x0, Math.min(sy, y)], [x1, Math.max(sy, y)]];
+                selection = [
+                  [x0, Math.min(sy, y)],
+                  [x1, Math.max(sy, y)]
+                ];
             }
             this.setState({selection});
             this.props.onBrush({
@@ -188,13 +196,22 @@ class SVGBrush extends PureComponent {
               let selection = this.state.selection;
               switch (brushType) {
                 case '2d':
-                  selection = [[mx0, my0], [mx1, my1]];
+                  selection = [
+                    [mx0, my0],
+                    [mx1, my1]
+                  ];
                   break;
                 case 'x':
-                  selection = [[mx0, y0], [mx1, y1]];
+                  selection = [
+                    [mx0, y0],
+                    [mx1, y1]
+                  ];
                   break;
                 case 'y':
-                  selection = [[x0, my0], [x1, my1]];
+                  selection = [
+                    [x0, my0],
+                    [x1, my1]
+                  ];
               }
               this.move = [x, y];
               this.setState({selection});
@@ -230,7 +247,10 @@ class SVGBrush extends PureComponent {
               switch (brushType) {
                 case '2d':
                 case 'y':
-                  selection = [[x0, my0], [x1, my1]];
+                  selection = [
+                    [x0, my0],
+                    [x1, my1]
+                  ];
               }
               this.move = [x, y];
               this.setState({selection});
@@ -270,7 +290,10 @@ class SVGBrush extends PureComponent {
               switch (brushType) {
                 case '2d':
                 case 'x':
-                  selection = [[mx0, y0], [mx1, y1]];
+                  selection = [
+                    [mx0, y0],
+                    [mx1, y1]
+                  ];
               }
               this.move = [x, y];
               this.setState({selection});
@@ -310,7 +333,10 @@ class SVGBrush extends PureComponent {
               switch (brushType) {
                 case '2d':
                 case 'y':
-                  selection = [[x0, my0], [x1, my1]];
+                  selection = [
+                    [x0, my0],
+                    [x1, my1]
+                  ];
               }
               this.move = [x, y];
               this.setState({selection});
@@ -350,7 +376,10 @@ class SVGBrush extends PureComponent {
               switch (brushType) {
                 case '2d':
                 case 'x':
-                  selection = [[mx0, y0], [mx1, y1]];
+                  selection = [
+                    [mx0, y0],
+                    [mx1, y1]
+                  ];
               }
               this.move = [x, y];
               this.setState({selection});
@@ -392,17 +421,26 @@ class SVGBrush extends PureComponent {
                   [mx, my] = [xbf(x0 + dx), ybf(y0 + dy)];
                   [mx0, mx1] = mx < x1 ? [mx, x1] : [x1, x1];
                   [my0, my1] = my < y1 ? [my, y1] : [y1, y1];
-                  selection = [[mx0, my0], [mx1, my1]];
+                  selection = [
+                    [mx0, my0],
+                    [mx1, my1]
+                  ];
                   break;
                 case 'x':
                   [mx, my] = [xbf(x0 + dx), y0];
                   [mx0, mx1] = mx < x1 ? [mx, x1] : [x1, x1];
-                  selection = [[mx0, y0], [mx1, y1]];
+                  selection = [
+                    [mx0, y0],
+                    [mx1, y1]
+                  ];
                   break;
                 case 'y':
                   [mx, my] = [x0, ybf(y0 + dy)];
                   [my0, my1] = my < y1 ? [my, y1] : [y1, y1];
-                  selection = [[x0, my0], [x1, my1]];
+                  selection = [
+                    [x0, my0],
+                    [x1, my1]
+                  ];
               }
               this.move = [x, y];
               this.setState({selection});
@@ -450,17 +488,26 @@ class SVGBrush extends PureComponent {
                   [mx, my] = [xbf(x1 + dx), ybf(y0 + dy)];
                   [mx0, mx1] = x0 < mx ? [x0, mx] : [x0, x0];
                   [my0, my1] = my < y1 ? [my, y1] : [y1, y1];
-                  selection = [[mx0, my0], [mx1, my1]];
+                  selection = [
+                    [mx0, my0],
+                    [mx1, my1]
+                  ];
                   break;
                 case 'x':
                   [mx, my] = [xbf(x1 + dx), y0];
                   [mx0, mx1] = x0 < mx ? [x0, mx] : [x0, x0];
-                  selection = [[mx0, y0], [mx1, y1]];
+                  selection = [
+                    [mx0, y0],
+                    [mx1, y1]
+                  ];
                   break;
                 case 'y':
                   [mx, my] = [x1, ybf(y0 + dy)];
                   [my0, my1] = my < y1 ? [my, y1] : [y1, y1];
-                  selection = [[x0, my0], [x1, my1]];
+                  selection = [
+                    [x0, my0],
+                    [x1, my1]
+                  ];
               }
               this.move = [x, y];
               this.setState({selection});
@@ -508,17 +555,26 @@ class SVGBrush extends PureComponent {
                   [mx, my] = [xbf(x1 + dx), ybf(y1 + dy)];
                   [mx0, mx1] = x0 < mx ? [x0, mx] : [x0, x0];
                   [my0, my1] = y0 < my ? [y0, my] : [y0, y0];
-                  selection = [[mx0, my0], [mx1, my1]];
+                  selection = [
+                    [mx0, my0],
+                    [mx1, my1]
+                  ];
                   break;
                 case 'x':
                   [mx, my] = [xbf(x1 + dx), y1];
                   [mx0, mx1] = x0 < mx ? [x0, mx] : [x0, x0];
-                  selection = [[mx0, y0], [mx1, y1]];
+                  selection = [
+                    [mx0, y0],
+                    [mx1, y1]
+                  ];
                   break;
                 case 'y':
                   [mx, my] = [x1, ybf(y1 + dy)];
                   [my0, my1] = y0 < my ? [y0, my] : [y0, y0];
-                  selection = [[x0, my0], [x1, my1]];
+                  selection = [
+                    [x0, my0],
+                    [x1, my1]
+                  ];
               }
               this.move = [x, y];
               this.setState({selection});
@@ -566,17 +622,26 @@ class SVGBrush extends PureComponent {
                   [mx, my] = [xbf(x0 + dx), ybf(y1 + dy)];
                   [mx0, mx1] = mx < x1 ? [mx, x1] : [x1, x1];
                   [my0, my1] = y0 < my ? [y0, my] : [y0, y0];
-                  selection = [[mx0, my0], [mx1, my1]];
+                  selection = [
+                    [mx0, my0],
+                    [mx1, my1]
+                  ];
                   break;
                 case 'x':
                   [mx, my] = [xbf(x0 + dx), y1];
                   [mx0, mx1] = mx < x1 ? [mx, x1] : [x1, x1];
-                  selection = [[mx0, y0], [mx1, y1]];
+                  selection = [
+                    [mx0, y0],
+                    [mx1, y1]
+                  ];
                   break;
                 case 'y':
                   [mx, my] = [x0, ybf(y1 + dy)];
                   [my0, my1] = y0 < my ? [y0, my] : [y0, y0];
-                  selection = [[x0, my0], [x1, my1]];
+                  selection = [
+                    [x0, my0],
+                    [x1, my1]
+                  ];
               }
               this.move = [x, y];
               this.setState({selection});
