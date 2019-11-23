@@ -111,9 +111,9 @@ Defines the brush boundary. The array `[[x0, y0], [x1, y1]]` defines the boundin
 
 `selection` **(Array, Optional)**
 
-- Default: `null`
+- Default: `undefined`
 
-Manually set the selection of the brush. This is typically used when setting the initial state of the brush, or when post processing the brush selections, e.g. brush snapping. Like the `extent`, the `selection` is also defined by a bounding box array `[[x0, y0], [x1, y1]]`. The brush will also be rendered according to the selection. When the `selection` is set to `null`, the brush will be cleared.
+Manually set the selection of the brush. This is typically used when setting the initial state of the brush, or when post processing the brush selections, e.g. brush snapping. Like the `extent`, the `selection` is also defined by a bounding box array `[[x0, y0], [x1, y1]]`. When the `selection` parameter is defined, the brush will be rendered according to the selection. When the `selection` parameter is set to `null`, the brush will be cleared. When the `selection` parameter is `undefined`, the brush  rendering will be automatically controlled during the interactions.  
 
 ### Methods
 
